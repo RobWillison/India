@@ -37,7 +37,7 @@
 
 	<page :item="about"></page>
 	<page :item="work"></page>
-	<page :item="contact"></page>
+	<contactpage :item="contact"></contactpage>
 	<page :item="more"></page>
 </div>
 
@@ -58,6 +58,23 @@
 		<div class="pagetext center-block">
 			{{ item.content }}
 		</div>
+	</div>
+</template>
+
+<template id="contactpage">
+	<div v-show="item.onthispage" transition="slideup" class="page animated">
+		<img src="{{ item.src }}"  class="pageimage center-block"></img>
+		<form>
+		  <div class="form-group pagetext center-block">
+		    <label for="exampleInputEmail1">Email address</label>
+		    <input type="email" class="form-control" placeholder="Email">
+		  </div>
+		  <div class="form-group pagetext center-block">
+		    <label for="exampleInputPassword1">Message</label>
+		    <textarea rows="5" class="form-control" placeholder="Message"></textarea>
+		  </div>
+		  <button @click.prevent="submitContactForm()" class="btn btn-default center-block">Submit</button>
+		</form>
 	</div>
 </template>
 

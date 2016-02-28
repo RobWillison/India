@@ -13,6 +13,13 @@ Vue.component('page', {
 	template: "#page",
 });
 
+Vue.component('contactpage', {
+
+	props: ['item'],
+
+	template: "#contactpage",
+});
+
 Vue.transition('rotateOffLeft', {
 	css: false,
 	leave: function(el, done){
@@ -114,6 +121,10 @@ new Vue({
 			this.contact.onthispage = false;
 			this.about.onthispage = false;
 			this.work.onthispage = false;
+		},
+
+		submitContactForm: function() {
+
 		}
 	},
 

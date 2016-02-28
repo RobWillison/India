@@ -1,7 +1,5 @@
 body {
-
   overflow-x: hidden;
-  overflow-y: hidden;
 }
 
 .menudiv {
@@ -14,7 +12,7 @@ body {
 
 
 .glyphicon {
-    font-size: 5vw;
+    font-size: 3em;
 }
 
 .menuoverlaytext {
@@ -26,7 +24,8 @@ body {
 }
 
 .backButton {
-	height: 5em;
+  padding-top: 2em;
+	height: 3em;
 }
 
 .menuitem {
@@ -68,11 +67,15 @@ body {
 }
 
 .pageimage {
-	width: 25vw;
-	height: 25vw;
+	width: 15vw;
+	height: 15vw;
 	border-radius: 5%;
 	-webkit-border-radius: 5%;
 	-moz-border-radius: 5%;
+}
+
+.contactForm {
+  width: 70vw;
 }
 
 @-webkit-keyframes rollleaveleft {
