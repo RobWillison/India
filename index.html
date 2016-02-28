@@ -1,0 +1,68 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="vendor/hover/hover.min.css">
+<link rel="stylesheet" href="vendor/animate/animate.css">
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet'  type='text/css'>
+<link rel="stylesheet" type="text/css" href="style/main.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="js/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src = "js/app/animations.js"></script>
+
+<script src = "js/lib/vue.js"></script>
+
+<body>
+
+<div class="container" id="app">
+	<div class="col-md-6 backButton">
+		<span v-show="! onMainPage" @click="back" transition="fade" class="glyphicon glyphicon-chevron-left animated" aria-hidden="true"> </span>
+	</div>
+
+	<div class="menudiv">
+		<div>
+		  	<menuitem :item="about" :show="onMainPage"></menuitem>
+		    <menuitem :item="work" :show="onMainPage"></menuitem>
+		</div>
+
+		<div>
+		  	<menuitem :item="contact" :show="onMainPage"></menuitem>
+		    <menuitem :item="more" :show="onMainPage"></menuitem>
+		</div>
+	</div>
+
+	<page :item="about"></page>
+	<page :item="work"></page>
+	<page :item="contact"></page>
+	<page :item="more"></page>
+</div>
+
+
+<template id="menuitem">
+
+	<div v-show='show' class="col-sm-6 animated" @click='item.onthispage = true' transition='rotateOffLeft'>
+		<img src='{{ item.src }}'  class='menuitem'></img>
+		<div class="menuoverlay">
+			<div class="menuoverlaytext">{{ item.name }}</div>
+		</div>
+	</div>
+</template>
+
+<template id="page">
+	<div v-show="item.onthispage" transition="slideup" class="page animated">
+		<img src="{{ item.src }}"  class="pageimage center-block"></img>
+		<div class="pagetext center-block">
+			{{ item.content }}
+		</div>
+	</div>
+</template>
+
+
+</body>
+
+<script src="js/app/main.js"></script>
+</html>
