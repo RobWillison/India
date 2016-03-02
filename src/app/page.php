@@ -14,7 +14,7 @@ $pageData = $result->fetchArray();
 
 $title = $pageData['name'];
 $image = '../../' . $pageData['image'];
-$title = $pageData['name'];
+$content = $pageData['content'];
 
 
 include __DIR__  . '/../view/page.phtml';
