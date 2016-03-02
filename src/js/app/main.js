@@ -20,6 +20,13 @@ Vue.component('contactpage', {
 	template: "#contactpage",
 });
 
+Vue.component('workpage', {
+
+	props: ['item'],
+
+	template: "#workpage",
+});
+
 Vue.transition('rotateOffLeft', {
 	css: false,
 	leave: function(el, done){
@@ -55,11 +62,14 @@ Vue.transition('rotateOffLeft', {
 Vue.transition('slideup', {
 	css: false,
 	leave: function(el, done){
-		slideDown(el)
+		$(el).removeClass('slideInUp');
+		$(el).addClass('slideOutDown');
 		setTimeout(done, 2000, true);
 	},
 
 	enter: function(el, done){
+		$(el).removeClass('slideOutDown');
+		$(el).addClass('slideInUp');
 		slideUp(el)
 	},
 });
@@ -87,7 +97,24 @@ new Vue({
 			src: 'img/india1.jpg',
 			onthispage: false,
 			wasLastPage: false,
-			content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+			workPieces: [
+				{src: 'img/india2.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
+				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
+				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
+				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
+				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
+				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
+				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
+				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
+				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
+				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
+				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
+				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
+				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
+				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
+				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
+				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'}
+			]
 		},
 
 		about: {
@@ -103,7 +130,6 @@ new Vue({
 			src: 'img/india3.jpg',
 			onthispage: false,
 			wasLastPage: false,
-			content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 		},
 
 		more: {
@@ -111,7 +137,7 @@ new Vue({
 			src: 'img/india4.jpg',
 			onthispage: false,
 			wasLastPage: false,
-			content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+			content: "Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 		},
 	},
 

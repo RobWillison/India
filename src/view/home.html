@@ -5,19 +5,18 @@
 <link rel="stylesheet" href="vendor/hover/hover.min.css">
 <link rel="stylesheet" href="vendor/animate/animate.css">
 <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet'  type='text/css'>
-<link rel="stylesheet" type="text/css" href="style/main.css">
+<link rel="stylesheet" type="text/css" href="src/style/main.css">
 <!-- Optional theme -->
 <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap-theme.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src="js/lib/bootstrap/js/bootstrap.min.js"></script>
-<script src = "js/app/animations.js"></script>
+<script src="src/js/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src = "src/js/app/animations.js"></script>
 
-<script src = "js/lib/vue.js"></script>
+<script src = "src/js/lib/vue.js"></script>
 
 <body>
-
 <div class="container" id="app">
 	<div class="col-md-6 backButton">
 		<span v-show="! onMainPage" @click="back" transition="fade" class="glyphicon glyphicon-chevron-left animated" aria-hidden="true"> </span>
@@ -36,7 +35,7 @@
 	</div>
 
 	<page :item="about"></page>
-	<page :item="work"></page>
+	<workpage :item="work"></workpage>
 	<contactpage :item="contact"></contactpage>
 	<page :item="more"></page>
 </div>
@@ -78,8 +77,23 @@
 	</div>
 </template>
 
+<template id="workpage">
+	<div class="page">
+		<div class="container">
+			<div class="row workPiecesList center-block">
+				<div class="col-md-4 animated" v-for="workPiece in item.workPieces" v-show="item.onthispage" transition="slideup">
+					<a href="{{ workPiece.link }}" class="workPiece">
+						<img class="workPieceImg" src="{{ workPiece.src }}"></img>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+
 
 </body>
 
-<script src="js/app/main.js"></script>
+<script src="src/js/app/main.js"></script>
 </html>
