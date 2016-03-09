@@ -97,24 +97,7 @@ new Vue({
 			src: 'img/india1.jpg',
 			onthispage: false,
 			wasLastPage: false,
-			workPieces: [
-				{src: 'img/india2.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
-				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
-				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
-				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
-				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
-				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
-				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
-				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
-				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
-				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
-				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
-				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
-				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
-				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
-				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'},
-				{src: 'img/india4.jpg', link: 'src/app/page.php?page=1', title: 'Test'}
-			]
+			workPieces: []
 		},
 
 		about: {
@@ -141,6 +124,10 @@ new Vue({
 		},
 	},
 
+	created: function () {
+	    this.fetchData()
+	},
+
 	methods: {
 		back: function() {
 			this.more.onthispage = false;
@@ -151,7 +138,18 @@ new Vue({
 
 		submitContactForm: function() {
 
-		}
+		},
+
+		fetchData: function () {
+		      $.ajax({
+				  dataType: "json",
+				  url: 'src/app/fetchWork.php',
+				  context: this,
+				  success: function (data) {
+				  		this.work.workPieces = data
+				  }
+				});
+	    }
 	},
 
 	computed: {

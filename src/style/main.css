@@ -98,10 +98,6 @@ body {
   width: 15vw;
   height: 15vw;
 
-  display: inline-block;
-  background: black;
-  padding: 0;
-
   border-radius: 100%;
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
@@ -109,6 +105,34 @@ body {
 
 .workPiece:hover img {
     opacity: 0.7;
+}
+
+.workOverlay {
+  background-color: #000000;
+
+  position: absolute;
+  top:0;
+  left:1.1em;
+
+
+  width: 15vw;
+  height: 15vw;
+
+  display: inline-block;
+  padding: 0;
+
+  z-index: -1;
+
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+}
+
+.workPieceName {
+  text-align: center;
+  padding-top: 4vw;
+
+  color: #ffffff;
 
 }
 
