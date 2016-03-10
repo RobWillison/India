@@ -87,7 +87,7 @@ Vue.transition('fade', {
 	},
 });
 
-new Vue({
+var vue = new Vue({
 
 	el:'#app',
 
@@ -130,10 +130,14 @@ new Vue({
 
 	methods: {
 		back: function() {
-			this.more.onthispage = false;
-			this.contact.onthispage = false;
-			this.about.onthispage = false;
-			this.work.onthispage = false;
+			if (this.more.onthispage || this.contact.onthispage || this.about.onthispage || this.work.onthispage) {
+				this.more.onthispage = false;
+				this.contact.onthispage = false;
+				this.about.onthispage = false;
+				this.work.onthispage = false;
+
+				history.pushState(null, null, 'home');
+			}
 		},
 
 		submitContactForm: function() {
@@ -159,3 +163,10 @@ new Vue({
 		}
 	}
 })
+
+//Handle Back Buton
+history.pushState(null, null, 'home');
+
+window.addEventListener('popstate', function(event) {
+		vue.back();
+});

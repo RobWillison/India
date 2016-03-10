@@ -80,8 +80,8 @@
 <template id="workpage">
 	<div class="page">
 		<div class="container">
-			<div class="row workPiecesList center-block animated" transition="slideup">
-				<div class="col-md-4" v-for="workPiece in item.workPieces" v-show="item.onthispage">
+			<div class="row workPiecesList center-block">
+				<div class="col-md-4 animated" v-for="workPiece in item.workPieces" v-show="item.onthispage" transition="slideup">
 					<a href="{{ workPiece.link }}" class="workPiece">
 						<img class="workPieceImg" src="{{ workPiece.src }}"></img>
 					</a>

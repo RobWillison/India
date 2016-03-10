@@ -53,7 +53,7 @@ var slideUp = function (el) {
 					var yPos = start - (height * now);
 
 					$(el).css({
-							top: yPos
+							transform: 'translateY('+ yPos +'px)'
 					});
 			}
 	});
