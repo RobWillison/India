@@ -153,6 +153,15 @@ var vue = new Vue({
 				  		this.work.workPieces = data
 				  }
 				});
+
+				$.ajax({
+				dataType: "json",
+				url: 'src/app/fetchPages.php',
+				context: this,
+				success: function (data) {
+						this.work.workPieces = data
+				}
+			});
 	    }
 	},
 
