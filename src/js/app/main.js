@@ -6,12 +6,20 @@ Vue.component('menuitem', {
 	template: "#menuitem",
 });
 
-Vue.component('menuitemsmall', {
+Vue.component('menuitemsmallleft', {
 
-	props: ['image', 'src'],
+	props: ['image', 'link', 'show'],
 
 
-	template: "#menuitemsmall",
+	template: "#menuitemsmallleft",
+});
+
+Vue.component('menuitemsmallright', {
+
+	props: ['image', 'link', 'show'],
+
+
+	template: "#menuitemsmallright",
 });
 
 Vue.component('page', {
@@ -35,7 +43,7 @@ Vue.component('workpage', {
 	template: "#workpage",
 });
 
-Vue.transition('rotateOffLeft', {
+Vue.transition('rotateOff', {
 	css: false,
 	leave: function(el, done){
 		$(el).removeClass('rollenterleft');
@@ -66,6 +74,37 @@ Vue.transition('rotateOffLeft', {
 		}
 	},
 });
+
+Vue.transition('rotateOffLeft', {
+	css: false,
+	leave: function(el, done){
+		$(el).removeClass('rollenterleft');
+
+		$(el).addClass('rollleaveleft');
+	},
+
+	enter: function(el, done){
+		$(el).removeClass('rollleaveleft');
+
+		$(el).addClass('rollenterleft');
+	},
+});
+
+Vue.transition('rotateOffRight', {
+	css: false,
+	leave: function(el, done){
+		$(el).removeClass('rollenterright');
+
+		$(el).addClass('rollleaveright');
+	},
+
+	enter: function(el, done){
+		$(el).removeClass('rollleaveright');
+
+		$(el).addClass('rollenterright');
+	},
+});
+
 
 Vue.transition('slideup', {
 	css: false,

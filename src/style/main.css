@@ -36,6 +36,16 @@ body {
 	-moz-border-radius: 100%;
 }
 
+.menuitemsmall {
+	width: 5vw;
+	height: 5vw;
+
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+}
+
+
 .blogImage {
   width: 30vw;
   height: 30vw;

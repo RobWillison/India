@@ -22,22 +22,30 @@
 		<span v-show="! onMainPage" @click="back" transition="fade" class="glyphicon glyphicon-chevron-left animated" aria-hidden="true"> </span>
 	</div>
 
-	<div class="menudiv">
-		<div>
+	<div class="menudiv container">
+		<div class="row">
 		  	<menuitem :item="about" :show="onMainPage"></menuitem>
 		    <menuitem :item="work" :show="onMainPage"></menuitem>
 		</div>
 
-		<div>
+		<div class="row">
 		  	<menuitem :item="contact" :show="onMainPage"></menuitem>
 		    <menuitem :item="more" :show="onMainPage"></menuitem>
 		</div>
 
-		<div>
-			<menuitemsmall :image="img/facebook.png" :src="www.facebook.com"></menuitemsmall>
+		<div class="row container">
+
+			<menuitemsmallleft :image="'img/instagram.jpg'" :link="'http://www.facebook.com'" :show="onMainPage"></menuitemsmallleft>
+			<menuitemsmallleft :image="'img/facebook.png'" :link="'http://www.facebook.com'" :show="onMainPage"></menuitemsmallleft>
+			<menuitemsmallright :image="'img/etsy.png'" :link="'http://www.facebook.com'" :show="onMainPage"></menuitemsmallright>
+			<menuitemsmallright :image="'img/behance.jpg'" :link="'http://www.behance.net'" :show="onMainPage"></menuitemsmallright>
 		</div>
 
 	</div>
+
+
+
+
 
 	<page :item="about"></page>
 	<workpage :item="work"></workpage>
@@ -47,7 +55,7 @@
 
 
 <template id="menuitem">
-	<div v-show='show' class="col-sm-6 animated" @click='item.onthispage = true' transition='rotateOffLeft'>
+	<div v-show='show' class="col-sm-6 animated" @click='item.onthispage = true' transition='rotateOff'>
 		<img src='{{ item.src }}'  class='menuitem'></img>
 		<div class="menuoverlay">
 			<div class="menuoverlaytext">{{ item.name }}</div>
@@ -55,9 +63,19 @@
 	</div>
 </template>
 
-<template id="menuitemsmall">
-	<div class="col-sm-6 animated" transition='rotateOffLeft'>
-		<img src='{{ image }}'  class='menuitemsmall'></img>
+<template id="menuitemsmallleft">
+	<div v-show='show' class="col-sm-1 animated" transition='rotateOffLeft'>
+		<a href = "{{ link }}">
+			<img src="{{ image }}"  class='menuitemsmall'></img>
+		</a>
+	</div>
+</template>
+
+<template id="menuitemsmallright">
+	<div v-show='show' class="col-sm-1 animated" transition='rotateOffRight'>
+		<a href = "{{ link }}">
+			<img src="{{ image }}"  class='menuitemsmall'></img>
+		</a>
 	</div>
 </template>
 
