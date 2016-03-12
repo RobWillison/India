@@ -159,9 +159,22 @@ var vue = new Vue({
 				url: 'src/app/fetchPages.php',
 				context: this,
 				success: function (data) {
-						this.work.workPieces = data
-				}
-			});
+							this.work.name = data
+							this.work.src = data
+
+							this.about.name = data
+							this.about.src = data
+							this.about.content = data
+
+							this.more.name = data
+							this.more.src = data
+							this.more.content = data
+
+							this.contact.name = data
+							this.contact.src = data
+
+					}
+				});
 	    }
 	},
 
