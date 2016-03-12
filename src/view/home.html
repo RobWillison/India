@@ -32,6 +32,11 @@
 		  	<menuitem :item="contact" :show="onMainPage"></menuitem>
 		    <menuitem :item="more" :show="onMainPage"></menuitem>
 		</div>
+
+		<div>
+			<menuitemsmall :image="img/facebook.png" :src="www.facebook.com"></menuitemsmall>
+		</div>
+
 	</div>
 
 	<page :item="about"></page>
@@ -42,12 +47,17 @@
 
 
 <template id="menuitem">
-
 	<div v-show='show' class="col-sm-6 animated" @click='item.onthispage = true' transition='rotateOffLeft'>
 		<img src='{{ item.src }}'  class='menuitem'></img>
 		<div class="menuoverlay">
 			<div class="menuoverlaytext">{{ item.name }}</div>
 		</div>
+	</div>
+</template>
+
+<template id="menuitemsmall">
+	<div class="col-sm-6 animated" transition='rotateOffLeft'>
+		<img src='{{ image }}'  class='menuitemsmall'></img>
 	</div>
 </template>
 

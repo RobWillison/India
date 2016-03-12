@@ -6,6 +6,14 @@ Vue.component('menuitem', {
 	template: "#menuitem",
 });
 
+Vue.component('menuitemsmall', {
+
+	props: ['image', 'src'],
+
+
+	template: "#menuitemsmall",
+});
+
 Vue.component('page', {
 
 	props: ['item'],
