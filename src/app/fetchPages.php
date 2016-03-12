@@ -5,14 +5,14 @@ $db = new SQLite3('../../data/site.db');
 $stmt = $db->prepare('SELECT * FROM page');
 
 $result = $stmt->execute();
-$workPieces = [];
+$pages = [];
 
 while ($pageData = $result->fetchArray()) {
 	$title = $pageData['name'];
 	$image = $pageData['image'];
-	$link = 'src/app/page.php?page=' . $pageData['id'];
+	$content = $pageData['content'];
 
-	$workPieces[] = ['src' => $image, 'link' => $link, 'title' => $title];
+	$pages[$pageData['id']] = ['title' => $title, 'src' => $image, 'content' => $content];
 }
 
-echo json_encode($workPieces);
+echo json_encode($pages);

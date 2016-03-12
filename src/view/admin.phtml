@@ -13,18 +13,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="src/js/lib/bootstrap/js/bootstrap.min.js"></script>
 
+<script src = "src/js/lib/vue.js"></script>
 <body>
+<div id='app'>
 
 <h1> Pages </h1>
 
-<h2> Work <a> Edit </a> </h2>
+<administerpage :page="about"></administerpage>
+<administerpage :page="work"></administerpage>
+<administerpage :page="contact"></administerpage>
+<administerpage :page="more"></administerpage>
 
-<h2> About <a> Edit Text </a> </h2>
-
-<h2> Contact <a> Edit Text </a> </h2>
-
-<h2> More <a> Edit Text </a> </h2>
-
+</div>
 </body>
+
+
+<template id="administerpage">
+	<div>
+      <h2> {{ page.name }} <a> Edit </a> </h2>
+	</div>
+</template>
+
+<script src="src/js/app/admin.js"></script>
 
 </html>

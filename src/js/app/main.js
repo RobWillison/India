@@ -93,34 +93,34 @@ var vue = new Vue({
 
 	data: {
 		work: {
-			name: 'WORK',
-			src: 'img/india1.jpg',
+			name: '',
+			src: '',
 			onthispage: false,
 			wasLastPage: false,
 			workPieces: []
 		},
 
 		about: {
-			name: 'ABOUT',
-			src: 'img/india2.jpg',
+			name: '',
+			src: '',
 			onthispage: false,
 			wasLastPage: false,
-			content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+			content: ""
 		},
 
 		contact: {
-			name: 'CONTACT',
-			src: 'img/india3.jpg',
+			name: '',
+			src: '',
 			onthispage: false,
 			wasLastPage: false,
 		},
 
 		more: {
-			name: 'MORE',
-			src: 'img/india4.jpg',
+			name: '',
+			src: '',
 			onthispage: false,
 			wasLastPage: false,
-			content: "Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+			content: ""
 		},
 	},
 
@@ -159,19 +159,19 @@ var vue = new Vue({
 				url: 'src/app/fetchPages.php',
 				context: this,
 				success: function (data) {
-							this.work.name = data
-							this.work.src = data
+							this.work.name = data[1]['title']
+							this.work.src = data[1]['src']
 
-							this.about.name = data
-							this.about.src = data
-							this.about.content = data
+							this.about.name = data[2]['title']
+							this.about.src = data[2]['src']
+							this.about.content = data[2]['content']
 
-							this.more.name = data
-							this.more.src = data
-							this.more.content = data
+							this.more.name = data[3]['title']
+							this.more.src = data[3]['src']
+							this.more.content = data[3]['content']
 
-							this.contact.name = data
-							this.contact.src = data
+							this.contact.name = data[4]['title']
+							this.contact.src = data[4]['src']
 
 					}
 				});

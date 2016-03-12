@@ -2,17 +2,17 @@
 
 $db = new SQLite3('../../data/site.db');
 
-$stmt = $db->prepare('SELECT * FROM PageText');
+$stmt = $db->prepare('SELECT * FROM workPiece');
 
 $result = $stmt->execute();
-$pages = [];
+$workPieces = [];
 
 while ($pageData = $result->fetchArray()) {
-	$pageTitle = $pageData['pageName'];
-	$image = $pageData['pageImage'];
-	$content = $pageData['pageText'];
+	$title = $pageData['name'];
+	$image = $pageData['image'];
+	$link = 'src/app/page.php?page=' . $pageData['id'];
 
-	$pages[] = ['title' => $pageTitle, 'src' => $image, 'content' => $content];
+	$workPieces[] = ['src' => $image, 'link' => $link, 'title' => $title];
 }
 
-echo json_encode($pages);
+echo json_encode($workPieces);
