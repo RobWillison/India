@@ -1,0 +1,130 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="styles/hover.min.css">
+<link rel="stylesheet" href="styles/animate.css">
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet'  type='text/css'>
+<link rel="stylesheet" type="text/css" href="styles/main.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="styles/bootstrap/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="scripts/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src = "scripts/app/animations.js"></script>
+
+<script src = "scripts/lib/vue.js"></script>
+
+<body>
+<div class="container" id="app">
+	<div class="col-md-6 backButton">
+		<span v-show="! onMainPage" @click="back" transition="fade" class="glyphicon glyphicon-chevron-left animated" aria-hidden="true"> </span>
+	</div>
+
+	<div class="menudiv container">
+		<div class="row">
+		  	<menuitem :item="about" :show="onMainPage"></menuitem>
+		    <menuitem :item="work" :show="onMainPage"></menuitem>
+		</div>
+
+		<div class="row">
+		  	<menuitem :item="contact" :show="onMainPage"></menuitem>
+		    <menuitem :item="more" :show="onMainPage"></menuitem>
+		</div>
+
+		<div class="row container">
+
+			<menuitemsmallleft :image="'images/instagram.jpg'" :link="'http://www.facebook.com'" :show="onMainPage"></menuitemsmallleft>
+			<menuitemsmallleft :image="'images/facebook.png'" :link="'http://www.facebook.com'" :show="onMainPage"></menuitemsmallleft>
+			<menuitemsmallright :image="'images/etsy.png'" :link="'http://www.facebook.com'" :show="onMainPage"></menuitemsmallright>
+			<menuitemsmallright :image="'images/behance.jpg'" :link="'http://www.behance.net'" :show="onMainPage"></menuitemsmallright>
+		</div>
+
+	</div>
+
+
+
+
+
+	<page :item="about"></page>
+	<workpage :item="work"></workpage>
+	<contactpage :item="contact"></contactpage>
+	<page :item="more"></page>
+</div>
+
+
+<template id="menuitem">
+	<div v-show='show' class="col-sm-6 animated" @click='item.onthispage = true' transition='rotateOff'>
+		<img src='{{ item.src }}'  class='menuitem'></img>
+		<div class="menuoverlay">
+			<div class="menuoverlaytext">{{ item.name }}</div>
+		</div>
+	</div>
+</template>
+
+<template id="menuitemsmallleft">
+	<div v-show='show' class="col-sm-1 animated" transition='rotateOffLeft'>
+		<a href = "{{ link }}">
+			<img src="{{ image }}"  class='menuitemsmall'></img>
+		</a>
+	</div>
+</template>
+
+<template id="menuitemsmallright">
+	<div v-show='show' class="col-sm-1 animated" transition='rotateOffRight'>
+		<a href = "{{ link }}">
+			<img src="{{ image }}"  class='menuitemsmall'></img>
+		</a>
+	</div>
+</template>
+
+<template id="page">
+	<div v-show="item.onthispage" transition="slideup" class="page animated">
+		<img src="{{ item.src }}"  class="pageimage center-block"></img>
+		<div class="pagetext center-block">
+			{{ item.content }}
+		</div>
+	</div>
+</template>
+
+<template id="contactpage">
+	<div v-show="item.onthispage" transition="slideup" class="page animated">
+		<img src="{{ item.src }}"  class="pageimage center-block"></img>
+		<form>
+		  <div class="form-group pagetext center-block">
+		    <label for="exampleInputEmail1">Email address</label>
+		    <input type="email" class="form-control" placeholder="Email">
+		  </div>
+		  <div class="form-group pagetext center-block">
+		    <label for="exampleInputPassword1">Message</label>
+		    <textarea rows="5" class="form-control" placeholder="Message"></textarea>
+		  </div>
+		  <button @click.prevent="submitContactForm()" class="btn btn-default center-block">Submit</button>
+		</form>
+	</div>
+</template>
+
+<template id="workpage">
+	<div class="page">
+		<div class="container">
+			<div class="row workPiecesList center-block">
+				<div class="col-md-4 animated" v-for="workPiece in item.workPieces" v-show="item.onthispage" transition="slideup">
+					<a href="{{ workPiece.link }}" class="workPiece">
+						<img class="workPieceImg" src="{{ workPiece.src }}"></img>
+					</a>
+					<div class="workOverlay">
+						<h1 class="workPieceName"> {{ workPiece.title }} </h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+
+
+</body>
+
+<script src="scripts/app/main.js"></script>
+</html>
