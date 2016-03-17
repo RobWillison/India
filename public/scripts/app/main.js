@@ -194,7 +194,7 @@ var vue = new Vue({
 		fetchData: function () {
 		      $.ajax({
 				  dataType: "json",
-				  url: '/work',
+				  url: 'work',
 				  context: this,
 				  success: function (data) {
 				  		this.work.workPieces = data
@@ -203,7 +203,7 @@ var vue = new Vue({
 
 				$.ajax({
 				dataType: "json",
-				url: '/page/all',
+				url: 'page/all',
 				context: this,
 				success: function (data) {
 							this.work.name = data[1]['title']

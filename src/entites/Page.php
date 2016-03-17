@@ -23,7 +23,7 @@ class Page {
     $pageData = $result->fetchArray();
 
     $title = $pageData['name'];
-    $image = '../../' . $pageData['image'];
+    $image = '../' . $pageData['image'];
     $content = $pageData['content'];
 
 

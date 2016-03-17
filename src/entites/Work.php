@@ -23,7 +23,7 @@ class Work {
 		while ($pageData = $result->fetchArray()) {
 			$title = $pageData['name'];
 			$image = $pageData['image'];
-			$link = '/page/' . $pageData['id'];
+			$link = 'page/' . $pageData['id'];
 
 			$workPieces[] = ['src' => $image, 'link' => $link, 'title' => $title];
 		}
