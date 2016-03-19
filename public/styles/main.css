@@ -3,11 +3,11 @@ body {
 }
 
 .menudiv {
-  position: absolute;
-  width: 30vw;
-  height: 30vw;
-  left: 35vw;
-  top: 20vh;
+  width: 30vmax;
+  height: 30vmax;
+
+  padding-top: 3em;
+  margin: 0 auto;
 }
 
 
@@ -17,8 +17,8 @@ body {
 
 .menuoverlaytext {
   text-align: center;
-  padding-top: 5.5vw;
-  font-size: 3vw;
+  padding-top: 5.5vmax;
+  font-size: 3vmax;
   font-family: 'Droid Sans';
   color: #ffffff;
 }
@@ -26,19 +26,20 @@ body {
 .backButton {
   padding-top: 2em;
 	height: 3em;
+
 }
 
 .menuitem {
-	width: 15vw;
-	height: 15vw;
+	width: 15vmax;
+	height: 15vmax;
 	border-radius: 100%;
 	-webkit-border-radius: 100%;
 	-moz-border-radius: 100%;
 }
 
 .menuitemsmall {
-	width: 5vw;
-	height: 5vw;
+	width: 5vmax;
+	height: 5vmax;
 
 	border-radius: 100%;
 	-webkit-border-radius: 100%;
@@ -47,8 +48,8 @@ body {
 
 
 .blogImage {
-  width: 30vw;
-  height: 30vw;
+  width: 30vmax;
+  height: 30vmax;
   border-radius: 20%;
   -webkit-border-radius: 20%;
   -moz-border-radius: 20%;
@@ -62,8 +63,8 @@ body {
 
   opacity:0.5;
 
-	width: 15vw;
-	height: 15vw;
+	width: 15vmax;
+	height: 15vmax;
 
 	border-radius: 100%;
 	-webkit-border-radius: 100%;
@@ -101,12 +102,12 @@ body {
 }
 
 .contactForm {
-  width: 70vw;
+  width: 70vmax;
 }
 
 .workPiece {
-  width: 15vw;
-  height: 15vw;
+  width: 15vmax;
+  height: 15vmax;
 
   border-radius: 100%;
   -webkit-border-radius: 100%;
@@ -125,8 +126,8 @@ body {
   left:1.1em;
 
 
-  width: 15vw;
-  height: 15vw;
+  width: 15vmax;
+  height: 15vmax;
 
   display: inline-block;
   padding: 0;
@@ -140,15 +141,17 @@ body {
 
 .workPieceName {
   text-align: center;
-  padding-top: 4vw;
+  padding-top: 4vmax;
+
+  font-size: 3vw;
 
   color: #ffffff;
 
 }
 
 .workPieceImg {
-  width: 15vw;
-  height: 15vw;
+  width: 15vmax;
+  height: 15vmax;
 
   border-radius: 100%;
   -webkit-border-radius: 100%;
@@ -160,7 +163,14 @@ body {
 }
 
 .workPiecesList {
-  width: 50vw;
+  width: 50vmax;
+}
+
+.workitem {
+  width: 30vmax;
+
+  padding-top: 3em;
+  margin: 0 auto;
 }
 
 @-webkit-keyframes rollleaveleft {

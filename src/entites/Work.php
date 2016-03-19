@@ -30,4 +30,25 @@ class Work {
 
 		return $workPieces;
 	}
+
+	public function getById($id)
+	{
+		$stmt = $this->db->prepare('SELECT * FROM workPiece WHERE id = :id');
+
+		$stmt->bindValue(':id', $id, SQLITE3_INTEGER);
+
+		$result = $stmt->execute();
+		$pageData = $result->fetchArray();
+
+		$title = $pageData['name'];
+		$image = '../' . $pageData['image'];
+		$content = $pageData['content'];
+
+
+		return [
+			'title' => $title,
+			'image' => $image,
+			'content' => $content,
+		];
+	}
 }

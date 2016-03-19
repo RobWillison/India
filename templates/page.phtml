@@ -18,21 +18,20 @@
 <body>
 <div class="container" id="app">
 
-	<div class="row">
-		<div class="col-md-6 backButton">
+	<div>
+		<div class="col-xs-4 backButton">
 			<span @click="back" class="glyphicon glyphicon-chevron-left animated" aria-hidden="true"> </span>
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
-			<img src="<?= $image ?>" class="blogImage"></img>
-			<div class="blogtext">
-				<h1> <?= $title ?> </h1>
-					<?= $content ?>
-			</div>
+	<div class="workitem">
+		<img src="<?= $image ?>" class="blogImage"></img>
+		<div class="blogtext">
+			<h1> <?= $title ?> </h1>
+				<?= $content ?>
 		</div>
 	</div>
+
 
 
 </div>

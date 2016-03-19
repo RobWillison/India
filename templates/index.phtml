@@ -18,23 +18,23 @@
 
 <body>
 <div class="container" id="app">
-	<div class="col-md-6 backButton">
+	<div class="col-xs-4 backButton">
 		<span v-show="! onMainPage" @click="back" transition="fade" class="glyphicon glyphicon-chevron-left animated" aria-hidden="true"> </span>
 	</div>
 
-	<div class="menudiv container">
-		<div class="row">
+	<div class="menudiv">
+		<div>
 		  	<menuitem :item="about" :show="onMainPage"></menuitem>
 		    <menuitem :item="work" :show="onMainPage"></menuitem>
 		</div>
 
-		<div class="row">
+
+		<div>
 		  	<menuitem :item="contact" :show="onMainPage"></menuitem>
 		    <menuitem :item="more" :show="onMainPage"></menuitem>
 		</div>
 
-		<div class="row container">
-
+		<div>
 			<menuitemsmallleft :image="'images/instagram.jpg'" :link="'http://www.facebook.com'" :show="onMainPage"></menuitemsmallleft>
 			<menuitemsmallleft :image="'images/facebook.png'" :link="'http://www.facebook.com'" :show="onMainPage"></menuitemsmallleft>
 			<menuitemsmallright :image="'images/etsy.png'" :link="'http://www.facebook.com'" :show="onMainPage"></menuitemsmallright>
@@ -55,7 +55,7 @@
 
 
 <template id="menuitem">
-	<div v-show='show' class="col-sm-6 animated" @click='item.onthispage = true' transition='rotateOff'>
+	<div v-show='show' class="col-xs-6 animated" @click='item.onthispage = true' transition='rotateOff'>
 		<img src='{{ item.src }}'  class='menuitem'></img>
 		<div class="menuoverlay">
 			<div class="menuoverlaytext">{{ item.name }}</div>
@@ -64,7 +64,7 @@
 </template>
 
 <template id="menuitemsmallleft">
-	<div v-show='show' class="col-sm-1 animated" transition='rotateOffLeft'>
+	<div v-show='show' class="col-xs-3 animated" transition='rotateOffLeft'>
 		<a href = "{{ link }}">
 			<img src="{{ image }}"  class='menuitemsmall'></img>
 		</a>
@@ -72,7 +72,7 @@
 </template>
 
 <template id="menuitemsmallright">
-	<div v-show='show' class="col-sm-1 animated" transition='rotateOffRight'>
+	<div v-show='show' class="col-xs-3 animated" transition='rotateOffRight'>
 		<a href = "{{ link }}">
 			<img src="{{ image }}"  class='menuitemsmall'></img>
 		</a>
@@ -109,7 +109,7 @@
 	<div class="page">
 		<div class="container">
 			<div class="row workPiecesList center-block">
-				<div class="col-md-4 animated" v-for="workPiece in item.workPieces" v-show="item.onthispage" transition="slideup">
+				<div class="col-xs-4 animated" v-for="workPiece in item.workPieces" v-show="item.onthispage" transition="slideup">
 					<a href="{{ workPiece.link }}" class="workPiece">
 						<img class="workPieceImg" src="{{ workPiece.src }}"></img>
 					</a>

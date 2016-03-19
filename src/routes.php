@@ -32,9 +32,9 @@ $app->get('/page/[{id}]', function ($request, $response, $args) {
     // Sample log message
     $this->logger->info("India '/' pages");
 
-    $page = new Page();
+    $work = new Work();
 
-    $pageData = $page->getById($args['id']);
+    $pageData = $work->getById($args['id']);
 
     $args['title'] = $pageData['title'];
     $args['image'] = $pageData['image'];
