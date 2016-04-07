@@ -35,10 +35,10 @@
 		</div>
 
 		<div>
-			<menuitemsmallleft :image="'images/instagram.jpg'" :link="'http://www.facebook.com'" :show="onMainPage"></menuitemsmallleft>
-			<menuitemsmallleft :image="'images/facebook.png'" :link="'http://www.facebook.com'" :show="onMainPage"></menuitemsmallleft>
-			<menuitemsmallright :image="'images/etsy.png'" :link="'http://www.facebook.com'" :show="onMainPage"></menuitemsmallright>
-			<menuitemsmallright :image="'images/behance.jpg'" :link="'http://www.behance.net'" :show="onMainPage"></menuitemsmallright>
+			<menuitemsmallleft :image="'images/instagram_icon.png'" :link="'http://www.facebook.com'" :show="onMainPage"></menuitemsmallleft>
+			<menuitemsmallleft :image="'images/facebook_icon.png'" :link="'http://www.facebook.com'" :show="onMainPage"></menuitemsmallleft>
+			<menuitemsmallright :image="'images/etsy_icon.png'" :link="'http://www.facebook.com'" :show="onMainPage"></menuitemsmallright>
+			<menuitemsmallright :image="'images/behance_icon.png'" :link="'http://www.behance.net'" :show="onMainPage"></menuitemsmallright>
 		</div>
 
 	</div>
@@ -55,10 +55,10 @@
 
 
 <template id="menuitem">
-	<div v-show='show' class="col-xs-6 animated" @click='item.onthispage = true' transition='rotateOff'>
-		<img src='{{ item.src }}'  class='menuitem'></img>
+	<div v-show='show' class="col-xs-6 menuitemblock animated" @click='item.onthispage = true' @mouseover='onHover' @mouseout='onUnHover' transition='rotateOff'>
+		<img src='{{ item.srcNormal }}'  class='menuitem'></img>
 		<div class="menuoverlay">
-			<div class="menuoverlaytext">{{ item.name }}</div>
+			<img src='{{ item.srcHover }}'  class='menuitem' v-show='item.hover'></img>
 		</div>
 	</div>
 </template>
@@ -81,7 +81,7 @@
 
 <template id="page">
 	<div v-show="item.onthispage" transition="slideup" class="page animated">
-		<img src="{{ item.src }}"  class="pageimage center-block"></img>
+		<img src="{{ item.srcNormal }}"  class="pageimage center-block"></img>
 		<div class="pagetext center-block">
 			{{ item.content }}
 		</div>
@@ -90,7 +90,7 @@
 
 <template id="contactpage">
 	<div v-show="item.onthispage" transition="slideup" class="page animated">
-		<img src="{{ item.src }}"  class="pageimage center-block"></img>
+		<img src="{{ item.srcNormal }}"  class="pageimage center-block"></img>
 		<form>
 		  <div class="form-group pagetext center-block">
 		    <label for="exampleInputEmail1">Email address</label>

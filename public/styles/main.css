@@ -15,14 +15,6 @@ body {
     font-size: 3em;
 }
 
-.menuoverlaytext {
-  text-align: center;
-  padding-top: 5.5vmax;
-  font-size: 3vmax;
-  font-family: 'Droid Sans';
-  color: #ffffff;
-}
-
 .backButton {
   padding-top: 2em;
 	height: 3em;
@@ -32,9 +24,6 @@ body {
 .menuitem {
 	width: 15vmax;
 	height: 15vmax;
-	border-radius: 100%;
-	-webkit-border-radius: 100%;
-	-moz-border-radius: 100%;
 }
 
 .menuitemsmall {
@@ -46,6 +35,10 @@ body {
 	-moz-border-radius: 100%;
 }
 
+.menuitemblock {
+  padding-right: 0px;
+  padding-left: 0px;
+}
 
 .blogImage {
   width: 30vmax;
@@ -56,19 +49,12 @@ body {
 }
 
 .menuoverlay {
-	background-color: #000000;
 	position: absolute;
   top:0;
-  left:1em;
-
-  opacity:0.5;
+  left:0;
 
 	width: 15vmax;
 	height: 15vmax;
-
-	border-radius: 100%;
-	-webkit-border-radius: 100%;
-	-moz-border-radius: 100%;
 }
 
 .page {

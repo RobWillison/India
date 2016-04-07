@@ -4,6 +4,19 @@ Vue.component('menuitem', {
 
 
 	template: "#menuitem",
+
+	methods: {
+		onHover: function(event)
+		{
+
+			this.item.hover = true;
+		},
+		onUnHover: function(event)
+		{
+			this.item.hover = false;
+		}
+	}
+
 });
 
 Vue.component('menuitemsmallleft', {
@@ -141,33 +154,41 @@ var vue = new Vue({
 	data: {
 		work: {
 			name: '',
-			src: '',
+			srcNormal: '',
+			srcHover: '',
 			onthispage: false,
 			wasLastPage: false,
-			workPieces: []
+			workPieces: [],
+			hover: false
 		},
 
 		about: {
 			name: '',
-			src: '',
+			srcNormal: '',
+			srcHover: '',
 			onthispage: false,
 			wasLastPage: false,
-			content: ""
+			content: "",
+			hover: false
 		},
 
 		contact: {
 			name: '',
-			src: '',
+			srcNormal: '',
+			srcHover: '',
 			onthispage: false,
 			wasLastPage: false,
+			hover: false
 		},
 
 		more: {
 			name: '',
-			src: '',
+			srcNormal: '',
+			srcHover: '',
 			onthispage: false,
 			wasLastPage: false,
-			content: ""
+			content: "",
+			hover: false
 		},
 	},
 
@@ -207,18 +228,22 @@ var vue = new Vue({
 				context: this,
 				success: function (data) {
 							this.work.name = data[1]['title']
-							this.work.src = data[1]['src']
+							this.work.srcNormal = data[1]['src'] + '-normal.png'
+							this.work.srcHover = data[1]['src'] + '-hover.png'
 
 							this.about.name = data[2]['title']
-							this.about.src = data[2]['src']
+							this.about.srcNormal = data[2]['src'] + '-normal.png'
+							this.about.srcHover = data[2]['src'] + '-hover.png'
 							this.about.content = data[2]['content']
 
 							this.more.name = data[3]['title']
-							this.more.src = data[3]['src']
+							this.more.srcNormal = data[3]['src'] + '-normal.png'
+							this.more.srcHover = data[3]['src'] + '-hover.png'
 							this.more.content = data[3]['content']
 
 							this.contact.name = data[4]['title']
-							this.contact.src = data[4]['src']
+							this.contact.srcNormal = data[4]['src'] + '-normal.png'
+							this.contact.srcHover = data[4]['src'] + '-hover.png'
 
 					}
 				});
@@ -229,7 +254,7 @@ var vue = new Vue({
 		onMainPage: function()
 		{
 			return !(this.about.onthispage || this.work.onthispage || this.contact.onthispage || this.more.onthispage);
-		}
+		},
 	}
 })
 
