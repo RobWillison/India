@@ -21,15 +21,14 @@ class Page {
     $pages = [];
 
     while ($pageData = $result->fetchArray()) {
+      $id = $pageData['id'];
     	$title = $pageData['name'];
     	$image = $pageData['image'];
     	$content = $pageData['content'];
 
-    	$pages[$pageData['id']] = ['title' => $title, 'src' => $image, 'content' => $content];
+    	$pages[$pageData['id']] = ['id' => $id, 'title' => $title, 'src' => $image, 'content' => $content];
     }
 
     return $pages;
   }
-
-  public function add($name, )
 }
