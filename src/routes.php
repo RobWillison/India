@@ -1,8 +1,8 @@
 <?php
 // Routes
 
-use India\Entites\Work;
-use India\Entites\Page;
+use India\Dao\Work;
+use India\Dao\Page;
 
 $app->get('/work', function ($request, $response, $args) {
     // Sample log message
@@ -42,6 +42,30 @@ $app->get('/page/[{id}]', function ($request, $response, $args) {
 
     // Render index view
     return $this->renderer->render($response, 'page.phtml', $args);
+});
+
+$app->get('/admin', function ($request, $response, $args) {
+    // Sample log message
+    $this->logger->info("India '/' home");
+
+    // Render index view
+    return $this->renderer->render($response, 'admin.phtml', $args);
+});
+
+$app->get('/admin/addWork', function ($request, $response, $args) {
+    // Sample log message
+    $this->logger->info("India '/' home");
+
+    // Render index view
+    return $this->renderer->render($response, 'addWorkPiece.phtml', $args);
+});
+
+$app->get('/admin/[{page}]', function ($request, $response, $args) {
+    // Sample log message
+    $this->logger->info("India '/' admin");
+
+    // Render index view
+    return $this->renderer->render($response, 'admin.phtml', $args);
 });
 
 

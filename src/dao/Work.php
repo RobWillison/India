@@ -23,9 +23,10 @@ class Work {
 		while ($pageData = $result->fetchArray()) {
 			$title = $pageData['name'];
 			$image = $pageData['image'];
+			$content = $pageData['content'];
 			$link = 'page/' . $pageData['id'];
 
-			$workPieces[] = ['src' => $image, 'link' => $link, 'title' => $title];
+			$workPieces[] = ['src' => $image, 'link' => $link, 'title' => $title, 'content' => $content];
 		}
 
 		return $workPieces;
@@ -50,5 +51,17 @@ class Work {
 			'image' => $image,
 			'content' => $content,
 		];
+	}
+
+	public function addNew($name, $image, $content) {
+		$stmt = $this->db->prepare(
+			'INSERT INTO workPiece (name, image, content) VALUES :name, :image, :content'
+		);
+
+		$stmt->bindValue(':name', $name, SQLITE3_TEXT);
+		$stmt->bindValue(':image', $image, SQLITE3_TEXT);
+		$stmt->bindValue(':content', $content, SQLITE3_TEXT);
+
+		$result = $stmt->execute();
 	}
 }
