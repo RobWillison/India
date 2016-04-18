@@ -47,6 +47,13 @@ Vue.component('contactpage', {
 	props: ['item'],
 
 	template: "#contactpage",
+
+    methods: {
+        sendMail: function() {
+            email = this.$data.item.email;
+            message = this.$data.item.message;
+        }
+    }
 });
 
 Vue.component('workpage', {
@@ -178,7 +185,9 @@ var vue = new Vue({
 			srcHover: '',
 			onthispage: false,
 			wasLastPage: false,
-			hover: false
+			hover: false,
+            email: '',
+            message: ''
 		},
 
 		more: {
