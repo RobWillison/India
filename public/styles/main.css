@@ -42,10 +42,7 @@ body {
 
 .blogImage {
   width: 30vmax;
-  height: 30vmax;
-  border-radius: 20%;
-  -webkit-border-radius: 20%;
-  -moz-border-radius: 20%;
+  height: auto;
 }
 
 .menuoverlay {
@@ -73,7 +70,6 @@ body {
 
 .blogtext {
 	margin-top: 5em;
-  text-align: center;
 	font-family: 'Droid Sans';
 }
 
@@ -108,7 +104,6 @@ body {
 
   position: absolute;
   top:0;
-  left:1.1em;
 
 
   width: 15vmax;
