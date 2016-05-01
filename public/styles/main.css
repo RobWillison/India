@@ -41,7 +41,7 @@ body {
 }
 
 .blogImage {
-  width: 30vmax;
+  width: 50vmax;
   height: auto;
 }
 
@@ -146,8 +146,8 @@ body {
 }
 
 .workitem {
-  width: 30vmax;
-
+  width: 50vmax;
+  min-height: 1000px;
   padding-top: 3em;
   margin: 0 auto;
 }
