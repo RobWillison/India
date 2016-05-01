@@ -256,6 +256,12 @@ var vue = new Vue({
 
 					}
 				});
+
+				var page = location.search.split('page=')[1]
+
+				if (page == 'work') {
+					this.work.onthispage = true;
+				}
 	    }
 	},
 

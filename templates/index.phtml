@@ -65,7 +65,7 @@
 
 <template id="menuitemsmallleft">
 	<div v-show='show' class="col-xs-3 animated" transition='rotateOffLeft'>
-		<a href = "{{ link }}">
+		<a href = "{{ link }}" target="_blank">
 			<img src="{{ image }}"  class='menuitemsmall'></img>
 		</a>
 	</div>
@@ -73,7 +73,7 @@
 
 <template id="menuitemsmallright">
 	<div v-show='show' class="col-xs-3 animated" transition='rotateOffRight'>
-		<a href = "{{ link }}">
+		<a href = "{{ link }}" target="_blank">
 			<img src="{{ image }}"  class='menuitemsmall'></img>
 		</a>
 	</div>
@@ -83,7 +83,7 @@
 	<div v-show="item.onthispage" transition="slideup" class="page animated">
 		<img src="{{ item.srcNormal }}"  class="pageimage center-block"></img>
 		<div class="pagetext center-block">
-			{{ item.content }}
+			{{{ item.content }}}
 		</div>
 	</div>
 </template>

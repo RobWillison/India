@@ -10,6 +10,9 @@ body {
   margin: 0 auto;
 }
 
+.workPieceText {
+  margin-bottom: 70px;
+}
 
 .glyphicon {
     font-size: 3em;
@@ -43,6 +46,7 @@ body {
 .blogImage {
   width: 50vmax;
   height: auto;
+  padding-bottom: 10px;
 }
 
 .menuoverlay {
@@ -63,14 +67,11 @@ body {
 
 .pagetext {
 	margin-top: 5em;
-  text-align: center;
-	font-family: 'Droid Sans';
   width: 70vw;
 }
 
 .blogtext {
 	margin-top: 5em;
-	font-family: 'Droid Sans';
 }
 
 
