@@ -22,11 +22,12 @@ class Work {
 
 		while ($pageData = $result->fetchArray()) {
 			$title = $pageData['name'];
-			$image = $pageData['image'];
+			$image = $pageData['logo'];
+			$imageHover = $pageData['logoHover'];
 			$content = $pageData['content'];
 			$link = 'page/' . $pageData['id'];
 
-			$workPieces[] = ['src' => $image, 'link' => $link, 'title' => $title, 'content' => $content];
+			$workPieces[] = ['src' => $image, 'srcHover' => $imageHover, 'link' => $link, 'title' => $title, 'content' => $content, 'hover' => false];
 		}
 
 		return $workPieces;

@@ -19,13 +19,14 @@ class Work {
 
 		$result = $stmt->execute();
 		$workPieces = [];
+		die;
 
 		while ($pageData = $result->fetchArray()) {
 			$title = $pageData['name'];
-			$image = $pageData['image'];
+			$image = $pageData['logo'];
 			$link = 'page/' . $pageData['id'];
 
-			$workPieces[] = ['src' => $image, 'link' => $link, 'title' => $title];
+			$workPieces[] = ['test' => $image, 'link' => $link, 'title' => $title];
 		}
 
 		return $workPieces;

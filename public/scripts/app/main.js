@@ -40,6 +40,7 @@ Vue.component('page', {
 	props: ['item'],
 
 	template: "#page",
+
 });
 
 Vue.component('contactpage', {
@@ -61,6 +62,17 @@ Vue.component('workpage', {
 	props: ['item'],
 
 	template: "#workpage",
+
+	methods: {
+		onHover: function(item, event)
+		{
+			item.hover = true;
+		},
+		onUnHover: function(item, event)
+		{
+			item.hover = false;
+		}
+	}
 });
 
 Vue.transition('rotateOff', {

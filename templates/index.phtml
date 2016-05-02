@@ -111,11 +111,8 @@
 			<div class="row workPiecesList center-block">
 				<div class="col-xs-4 animated" v-for="workPiece in item.workPieces" v-show="item.onthispage" transition="slideup">
 					<a href="{{ workPiece.link }}" class="workPiece">
-						<img class="workPieceImg" src="{{ workPiece.src }}"></img>
+						<img class="workPieceImg" src="{{ workPiece.hover ? workPiece.srcHover : workPiece.src }}" @mouseover='onHover(workPiece)' @mouseout='onUnHover(workPiece)'></img>
 					</a>
-					<div class="workOverlay">
-						<h1 class="workPieceName"> {{ workPiece.title }} </h1>
-					</div>
 				</div>
 			</div>
 		</div>
