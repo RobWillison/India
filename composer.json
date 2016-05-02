@@ -1,7 +1,8 @@
 {
     "name": "rob/india",
     "require": {
-        "slim/slim-skeleton": "^3.0"
+        "slim/slim-skeleton": "^3.0",
+        "phpmailer/phpmailer": "^5.2"
     },
     "authors": [
         {
@@ -11,7 +12,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "India\\Dao\\": "src/dao/"
+            "India\\Dao\\": "src/dao/",
+            "India\\Services\\": "src/services/"
         }
     }
 }

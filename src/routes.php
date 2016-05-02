@@ -4,6 +4,7 @@
 use India\Dao\Work;
 use India\Dao\Page;
 use India\Dao\Comment;
+use India\Services\Email;
 
 $app->get('/work', function ($request, $response, $args) {
     // Sample log message
@@ -68,6 +69,19 @@ $app->get('/comment/[{id}]', function ($request, $response, $args) {
     $comments = $comment->getCommentPage($args['id']);
 
     return json_encode($comments);
+});
+
+$app->post('/email', function ($request) {
+    // Sample log message
+    $this->logger->info("India '/' comment add");
+
+    $allPostVars = $request->getParsedBody();
+
+    $email = new Email();
+
+    $email->send($allPostVars['email'], $allPostVars['body']);
+
+    return;
 });
 
 $app->get('/admin', function ($request, $response, $args) {

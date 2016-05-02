@@ -81,6 +81,20 @@ Vue.component('contactpage', {
         sendMail: function() {
             email = this.$data.item.email;
             message = this.$data.item.message;
+
+            $.ajax({
+			    url : "email",
+			    type: "POST",
+			    data : {'email': email, 'body': message},
+			    context: this,
+			    success: function(data)
+			    {			        
+
+			    },
+			});
+
+			this.$data.item.email = '';
+        	this.$data.item.message = '';
         }
     }
 });
