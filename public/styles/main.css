@@ -2,6 +2,10 @@ body {
   overflow-x: hidden;
 }
 
+a {
+    color: #ffd700;
+}
+
 .menudiv {
   width: 30vmax;
   height: 30vmax;
@@ -72,6 +76,14 @@ body {
 
 .blogtext {
 	margin-top: 5em;
+}
+
+.blogTitle {
+  color: #ffd700; /* Code for Firefox */
+}
+
+.blogTitleSpan {
+  color: black;
 }
 
 
