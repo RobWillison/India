@@ -3,6 +3,7 @@
 
 use India\Dao\Work;
 use India\Dao\Page;
+use India\Dao\Comment;
 
 $app->get('/work', function ($request, $response, $args) {
     // Sample log message
@@ -42,6 +43,31 @@ $app->get('/page/[{id}]', function ($request, $response, $args) {
 
     // Render index view
     return $this->renderer->render($response, 'page.phtml', $args);
+});
+
+
+$app->post('/comment/add', function ($request) {
+    // Sample log message
+    $this->logger->info("India '/' comment add");
+
+    $allPostVars = $request->getParsedBody();
+
+    $comment = new Comment();
+
+    $comments = $comment->newComment($allPostVars['name'], $allPostVars['comment']);
+
+    return;
+});
+
+$app->get('/comment/[{id}]', function ($request, $response, $args) {
+    // Sample log message
+    $this->logger->info("India '/' comment");
+
+    $comment = new Comment();
+
+    $comments = $comment->getCommentPage($args['id']);
+
+    return json_encode($comments);
 });
 
 $app->get('/admin', function ($request, $response, $args) {

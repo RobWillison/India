@@ -43,6 +43,34 @@ Vue.component('page', {
 
 });
 
+Vue.component('commentpage', {
+
+	props: ['item'],
+
+	template: "#commentpage",
+
+	methods: {
+        sendComment: function() {
+            name = this.$data.item.commentName;
+            comment = this.$data.item.commentText;
+
+            $.ajax({
+			    url : "comment/add",
+			    type: "POST",
+			    data : {'name': name, 'comment': comment},
+			    context: this,
+			    success: function(data)
+			    {			        
+		            this.$parent.$root.fetchData();
+			    },
+			});
+
+			this.$data.item.commentText = '';
+        	this.$data.item.commentName = '';
+        }
+    }
+});
+
 Vue.component('contactpage', {
 
 	props: ['item'],
@@ -202,14 +230,16 @@ var vue = new Vue({
             message: ''
 		},
 
-		more: {
+		comment: {
 			name: '',
 			srcNormal: '',
 			srcHover: '',
 			onthispage: false,
 			wasLastPage: false,
-			content: "",
-			hover: false
+			comments: [],
+			hover: false,
+			commentName: '',
+			commentTest: ''
 		},
 	},
 
@@ -219,8 +249,8 @@ var vue = new Vue({
 
 	methods: {
 		back: function() {
-			if (this.more.onthispage || this.contact.onthispage || this.about.onthispage || this.work.onthispage) {
-				this.more.onthispage = false;
+			if (this.comment.onthispage || this.contact.onthispage || this.about.onthispage || this.work.onthispage) {
+				this.comment.onthispage = false;
 				this.contact.onthispage = false;
 				this.about.onthispage = false;
 				this.work.onthispage = false;
@@ -243,6 +273,15 @@ var vue = new Vue({
 				  }
 				});
 
+		      $.ajax({
+				  dataType: "json",
+				  url: 'comment/0',
+				  context: this,
+				  success: function (data) {
+				  		this.comment.comments = data
+				  }
+				});
+
 				$.ajax({
 				dataType: "json",
 				url: 'page/all',
@@ -257,33 +296,34 @@ var vue = new Vue({
 							this.about.srcHover = data[2]['src'] + '-hover.png'
 							this.about.content = data[2]['content']
 
-							this.more.name = data[3]['title']
-							this.more.srcNormal = data[3]['src'] + '-normal.png'
-							this.more.srcHover = data[3]['src'] + '-hover.png'
-							this.more.content = data[3]['content']
+							this.comment.name = data[3]['title']
+							this.comment.srcNormal = data[3]['src'] + '-normal.png'
+							this.comment.srcHover = data[3]['src'] + '-hover.png'
 
 							this.contact.name = data[4]['title']
 							this.contact.srcNormal = data[4]['src'] + '-normal.png'
 							this.contact.srcHover = data[4]['src'] + '-hover.png'
 
+							var page = location.search.split('page=')[1]
+
+							if (page == 'work') {
+								this.work.onthispage = true;
+							}
+
 					}
 				});
 
-				var page = location.search.split('page=')[1]
-
-				if (page == 'work') {
-					this.work.onthispage = true;
-				}
+				
 	    }
 	},
 
 	computed: {
 		onMainPage: function()
 		{
-			return !(this.about.onthispage || this.work.onthispage || this.contact.onthispage || this.more.onthispage);
-		},
+			return !(this.about.onthispage || this.work.onthispage || this.contact.onthispage || this.comment.onthispage);
+		}
 	}
-})
+});
 
 //Handle Back Buton
 history.pushState(null, null, '.');

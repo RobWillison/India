@@ -163,6 +163,25 @@ a {
   margin: 0 auto;
 }
 
+.commentBubble {
+  width: 100%;
+}
+
+.commentText {
+  border-radius: 5px;
+  border: 2px solid #ffd700;
+  padding: 20px; 
+  width: 100%;
+}
+
+.commentInfo {
+  font-weight: bold;
+}
+
+.commentDate {
+  color: #ffd700;
+}
+
 @-webkit-keyframes rollleaveleft {
   from { -webkit-transform: translate3d(0, 0, 0) rotate(0deg);
     opacity: 1;
