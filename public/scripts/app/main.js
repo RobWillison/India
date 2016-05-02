@@ -95,6 +95,7 @@ Vue.component('contactpage', {
 
 			this.$data.item.email = '';
         	this.$data.item.message = '';
+        	this.$data.item.onthispage = false;
         }
     }
 });
