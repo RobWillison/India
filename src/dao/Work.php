@@ -15,7 +15,7 @@ class Work {
 
 	public function getAll()
 	{
-		$stmt = $this->db->prepare('SELECT * FROM workPiece');
+		$stmt = $this->db->prepare('SELECT * FROM workPiece ORDER BY id DESC');
 
 		$result = $stmt->execute();
 		$workPieces = [];
