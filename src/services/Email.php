@@ -8,6 +8,9 @@ class Email {
 
 	public function send($email, $body)
 	{
+		if (! ($email && $body)) {
+			return;
+		}
 		$mail = new PHPMailer;
 
 		$config = require __DIR__ . '/emailConfig.php';
@@ -21,7 +24,7 @@ class Email {
 		$mail->Port = 587;                                    // TCP port to connect to
 
 		$mail->setFrom($email, 'Mailer');
-		$mail->addAddress('indiapearce@hotmail.com', 'India');     // Add a recipient
+		$mail->addAddress('indiapearce@hotmail.co.uk', 'India');     // Add a recipient
 
 		$mail->Subject = 'From Website';
 		$mail->Body    = $body;
