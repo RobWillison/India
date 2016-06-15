@@ -1,6 +1,6 @@
 Vue.component('menuitem', {
 
-	props: ['item', 'show'],
+	props: ['item', 'show', 'page'],
 
 
 	template: "#menuitem",
@@ -14,6 +14,11 @@ Vue.component('menuitem', {
 		onUnHover: function(event)
 		{
 			this.item.hover = false;
+		},
+		onClick: function(event)
+		{
+			history.pushState({page: this.item.name}, this.item.name, '.');
+			this.page.name = this.item.name;
 		}
 	}
 
@@ -37,7 +42,7 @@ Vue.component('menuitemsmallright', {
 
 Vue.component('page', {
 
-	props: ['item'],
+	props: ['item', 'show'],
 
 	template: "#page",
 
@@ -45,7 +50,7 @@ Vue.component('page', {
 
 Vue.component('commentpage', {
 
-	props: ['item'],
+	props: ['item', 'show'],
 
 	template: "#commentpage",
 
@@ -60,7 +65,7 @@ Vue.component('commentpage', {
 			    data : {'name': name, 'comment': comment},
 			    context: this,
 			    success: function(data)
-			    {			        
+			    {
 		            this.$parent.$root.fetchData();
 			    },
 			});
@@ -73,7 +78,7 @@ Vue.component('commentpage', {
 
 Vue.component('contactpage', {
 
-	props: ['item'],
+	props: ['item', 'show'],
 
 	template: "#contactpage",
 
@@ -88,7 +93,7 @@ Vue.component('contactpage', {
 			    data : {'email': email, 'body': message},
 			    context: this,
 			    success: function(data)
-			    {			        
+			    {
 
 			    },
 			});
@@ -102,7 +107,7 @@ Vue.component('contactpage', {
 
 Vue.component('workpage', {
 
-	props: ['item'],
+	props: ['item', 'show'],
 
 	template: "#workpage",
 
@@ -218,7 +223,6 @@ var vue = new Vue({
 			name: '',
 			srcNormal: '',
 			srcHover: '',
-			onthispage: false,
 			wasLastPage: false,
 			workPieces: [],
 			hover: false
@@ -228,7 +232,6 @@ var vue = new Vue({
 			name: '',
 			srcNormal: '',
 			srcHover: '',
-			onthispage: false,
 			wasLastPage: false,
 			content: "",
 			hover: false
@@ -238,7 +241,6 @@ var vue = new Vue({
 			name: '',
 			srcNormal: '',
 			srcHover: '',
-			onthispage: false,
 			wasLastPage: false,
 			hover: false,
             email: '',
@@ -249,13 +251,15 @@ var vue = new Vue({
 			name: '',
 			srcNormal: '',
 			srcHover: '',
-			onthispage: false,
 			wasLastPage: false,
 			comments: [],
 			hover: false,
 			commentName: '',
 			commentTest: ''
 		},
+		page: {
+			name: getPageFromUrl()
+		}
 	},
 
 	created: function () {
@@ -263,19 +267,11 @@ var vue = new Vue({
 	},
 
 	methods: {
-		back: function() {
-			if (this.comment.onthispage || this.contact.onthispage || this.about.onthispage || this.work.onthispage) {
-				this.comment.onthispage = false;
-				this.contact.onthispage = false;
-				this.about.onthispage = false;
-				this.work.onthispage = false;
-
-				history.pushState(null, null, '.');
-			}
+		back: function(){
+			this.page.name = 'home';
 		},
-
-		submitContactForm: function() {
-
+		goToPage: function(page) {
+			this.page.name = page;
 		},
 
 		fetchData: function () {
@@ -319,30 +315,52 @@ var vue = new Vue({
 							this.contact.srcNormal = data[4]['src'] + '-normal.png'
 							this.contact.srcHover = data[4]['src'] + '-hover.png'
 
-							var page = location.search.split('page=')[1]
-
-							if (page == 'work') {
-								this.work.onthispage = true;
-							}
-
 					}
 				});
 
-				
+
 	    }
 	},
 
 	computed: {
 		onMainPage: function()
 		{
-			return !(this.about.onthispage || this.work.onthispage || this.contact.onthispage || this.comment.onthispage);
+			return this.page.name == 'home';
+		},
+		onAboutPage: function()
+		{
+			return (this.page.name == this.about.name);
+		},
+		onWorkPage: function()
+		{
+			return (this.page.name == this.work.name);
+		},
+		onContactPage: function()
+		{
+			return (this.page.name == this.contact.name);
+		},
+		onCommentPage: function()
+		{
+			return (this.page.name == this.comment.name);
 		}
 	}
 });
 
+function getPageFromUrl()
+{
+	var page = location.search.split('page=')[1]
+
+	if(page == undefined)
+	{
+		page = 'home';
+	}
+
+	return page;
+}
+
 //Handle Back Buton
-history.pushState(null, null, '.');
+history.pushState({page: 'home'}, 'home page', '.');
 
 window.addEventListener('popstate', function(event) {
-		vue.back();
+		vue.goToPage(event.state.page);
 });

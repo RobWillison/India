@@ -30,14 +30,13 @@
 
 	<div class="menudiv">
 		<div>
-		  	<menuitem :item="about" :show="onMainPage"></menuitem>
-		    <menuitem :item="work" :show="onMainPage"></menuitem>
+		  	<menuitem :item="about" :show="onMainPage" :page="page"></menuitem>
+		    <menuitem :item="work" :show="onMainPage" :page="page"></menuitem>
 		</div>
 
-
 		<div>
-		  	<menuitem :item="contact" :show="onMainPage"></menuitem>
-		    <menuitem :item="comment" :show="onMainPage"></menuitem>
+		  	<menuitem :item="contact" :show="onMainPage" :page="page"></menuitem>
+		    <menuitem :item="comment" :show="onMainPage" :page="page"></menuitem>
 		</div>
 
 		<div>
@@ -53,15 +52,15 @@
 
 
 
-	<page :item="about"></page>
-	<workpage :item="work"></workpage>
-	<contactpage :item="contact"></contactpage>
-	<commentpage :item="comment"></page>
+	<page :item="about" :show="onAboutPage"></page>
+	<workpage :item="work" :show="onWorkPage"></workpage>
+	<contactpage :item="contact" :show="onContactPage"></contactpage>
+	<commentpage :item="comment" :show="onCommentPage"></page>
 </div>
 
 
 <template id="menuitem">
-	<div v-show='show' class="col-xs-6 menuitemblock animated" @click='item.onthispage = true' @mouseover='onHover' @mouseout='onUnHover' transition='rotateOff'>
+	<div v-show='show' class="col-xs-6 menuitemblock animated" @click='onClick' @mouseover='onHover' @mouseout='onUnHover' transition='rotateOff'>
 		<img src='{{ item.srcNormal }}'  class='menuitem'></img>
 		<div class="menuoverlay">
 			<img src='{{ item.srcHover }}'  class='menuitem' v-show='item.hover'></img>
@@ -86,7 +85,7 @@
 </template>
 
 <template id="page">
-	<div v-show="item.onthispage" transition="slideup" class="page animated">
+	<div v-show="show" transition="slideup" class="page animated">
 		<img src="{{ item.srcNormal }}"  class="pageimage center-block"></img>
 		<div class="pagetext center-block">
 			{{{ item.content }}}
@@ -95,7 +94,7 @@
 </template>
 
 <template id="commentpage">
-	<div v-show="item.onthispage" transition="slideup" class="page animated">
+	<div v-show="show" transition="slideup" class="page animated">
 		<div class="container">
 			<div class="col-xs-2"></div>
 			<div class="col-xs-6">
@@ -129,7 +128,7 @@
 </template>
 
 <template id="contactpage">
-	<div v-show="item.onthispage" transition="slideup" class="page animated">
+	<div v-show="show" transition="slideup" class="page animated">
 		<img src="{{ item.srcNormal }}"  class="pageimage center-block"></img>
 		<form>
 		  <div class="form-group pagetext center-block">
@@ -149,7 +148,7 @@
 	<div class="page">
 		<div class="container">
 			<div class="row workPiecesList center-block">
-				<div class="col-xs-4 animated" v-for="workPiece in item.workPieces" v-show="item.onthispage" transition="slideup">
+				<div class="col-xs-4 animated" v-for="workPiece in item.workPieces" v-show="show" transition="slideup">
 					<a href="{{ workPiece.link }}" class="workPiece">
 						<img class="workPieceImg" src="{{ workPiece.hover ? workPiece.srcHover : workPiece.src }}" @mouseover='onHover(workPiece)' @mouseout='onUnHover(workPiece)'></img>
 					</a>
