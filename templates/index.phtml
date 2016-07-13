@@ -23,6 +23,8 @@
 <script src = "scripts/lib/vue.js"></script>
 
 <body>
+<?php include_once("../analyticstracking.php") ?>
+
 <div class="container" id="app">
 	<div class="col-xs-4 backButton">
 		<span v-show="! onMainPage" @click="back" transition="fade" class="glyphicon glyphicon-chevron-left animated" aria-hidden="true"> </span>
