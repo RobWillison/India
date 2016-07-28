@@ -26,7 +26,7 @@ class Email {
 		$mail->setFrom($email, 'Mailer');
 		$mail->addAddress('indiapearce@hotmail.co.uk', 'India');     // Add a recipient
 
-		$mail->Subject = 'From Website';
+		$mail->Subject = 'From ' . $email;
 		$mail->Body    = $body;
 
 		if(!$mail->send()) {
