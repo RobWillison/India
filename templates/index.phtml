@@ -24,34 +24,23 @@
 
 <body>
 <?php include_once("../analyticstracking.php") ?>
-
 <div class="container" id="app">
+	<confettie :data="confettiedata"></confettie>
 	<div class="col-xs-4 backButton">
-		<span v-show="! onMainPage" @click="back" transition="fade" class="glyphicon glyphicon-chevron-left animated" aria-hidden="true"> </span>
+		<span v-show="! onMainPage" @click="back" transition="fade" class="glyphicon glyphicon-chevron-left animated" aria-hidden="true"> {{ page.name }} </span>
 	</div>
 
 	<div class="menudiv">
-		<div>
-		  	<menuitem :item="about" :show="onMainPage" :page="page"></menuitem>
-		    <menuitem :item="work" :show="onMainPage" :page="page"></menuitem>
-		</div>
-
-		<div>
-		  	<menuitem :item="contact" :show="onMainPage" :page="page"></menuitem>
-		    <menuitem :item="comment" :show="onMainPage" :page="page"></menuitem>
-		</div>
-
-		<div>
-			<menuitemsmallleft :image="'images/facebook_icon.png'" :link="'https://www.facebook.com/IndiaPearceIllustration/'" :show="onMainPage"></menuitemsmallleft>
-			<menuitemsmallleft :image="'images/instagram_icon.png'" :link="'https://www.instagram.com/pearceillustration/'" :show="onMainPage"></menuitemsmallleft>
-			<menuitemsmallright :image="'images/etsy_icon.png'" :link="'https://www.instagram.com/indiapearceillustration/'" :show="onMainPage"></menuitemsmallright>
-			<menuitemsmallright :image="'images/tumblr_icon.png'" :link="'http://indaeillustration.tumblr.com'" :show="onMainPage"></menuitemsmallright>
+		<div v-show="onMainPage" class="animated" transition="fade">
+		  <div class="titleText"> Pearce </div>
+			<div class="container">
+				<menuitem :activecolor="'#DDDDDD'" :page="page" :item="work"> </menuitem>
+				<menuitem :activecolor="'#DDDDDD'" :page="page" :item="about">  </menuitem>
+				<menuitem :activecolor="'#DDDDDD'" :page="page" :item="contact"> </menuitem>
+			</div>
 		</div>
 
 	</div>
-
-
-
 
 
 	<page :item="about" :show="onAboutPage"></page>
@@ -62,16 +51,11 @@
 
 
 <template id="menuitem">
-	<div v-show='show' class="col-xs-6 menuitemblock animated" @click='onClick' @mouseover='onHover' @mouseout='onUnHover' transition='rotateOff'>
-		<img src='{{ item.srcNormal }}'  class='menuitem'></img>
-		<div class="menuoverlay">
-			<img src='{{ item.srcHover }}'  class='menuitem' v-show='item.hover'></img>
-		</div>
-	</div>
+	<div @mouseover="onHover" @mouseout="onUnHover" @click="onClick" class="col-xs-2 linkButton"> <div class="linkButtonInner" v-bind:style="{ backgroundColor: activecolor }"> {{ item.name }} </div>
 </template>
 
 <template id="menuitemsmallleft">
-	<div v-show='show' class="col-xs-3 animated" transition='rotateOffLeft'>
+	<div v-show='show' class="col-xs-3 animated" transition='fade'>
 		<a href = "{{ link }}" target="_blank">
 			<img src="{{ image }}"  class='menuitemsmall'></img>
 		</a>
@@ -79,7 +63,7 @@
 </template>
 
 <template id="menuitemsmallright">
-	<div v-show='show' class="col-xs-3 animated" transition='rotateOffRight'>
+	<div v-show='show' class="col-xs-3 animated" transition='fade'>
 		<a href = "{{ link }}" target="_blank">
 			<img src="{{ image }}"  class='menuitemsmall'></img>
 		</a>
@@ -160,6 +144,11 @@
 	</div>
 </template>
 
+<template id="confettie">
+	<div v-for="piece in data.pieces">
+		<img src="/images/confettie/confettie{{ piece.number }}.png" class="confetti" v-bind:style="{ left: piece.left + 'vw', top: piece.top + 'vh', transform: 'rotate(' + piece.angle + 'deg)' }"></img>
+	</div>
+</template>
 
 
 </body>

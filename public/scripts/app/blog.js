@@ -9,7 +9,7 @@ new Vue({
 
 	methods: {
 		back: function() {
-			document.location.href="../?page=Work";
+			document.location.href="../?page=portfolio";
 		}
 	}
 })

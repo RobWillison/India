@@ -32,7 +32,9 @@
 	</div>
 
 	<div class="workitem">
-		<img src="<?= $image ?>" class="blogImage"></img>
+		<?php if ($image != '../None') { ?>
+	  	<img src="<?= $image ?>" class="blogImage"></img>
+		<?php }; ?>
 		<div class="blogtext">
 			<u class="blogTitle"><span class="blogTitleSpan"><h1> <?= $title ?> </h1></span></u>
 			<?= $content ?>

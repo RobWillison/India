@@ -1,6 +1,6 @@
 Vue.component('menuitem', {
 
-	props: ['item', 'show', 'page'],
+	props: ['item', 'show', 'page', 'activecolor'],
 
 
 	template: "#menuitem",
@@ -8,36 +8,20 @@ Vue.component('menuitem', {
 	methods: {
 		onHover: function(event)
 		{
-
-			this.item.hover = true;
+			this.activecolor = this.item.color
 		},
 		onUnHover: function(event)
 		{
-			this.item.hover = false;
+			this.activecolor = '#ebf3f4'
 		},
 		onClick: function(event)
 		{
 			history.pushState({page: this.item.name}, this.item.name, '.');
 			this.page.name = this.item.name;
+			console.log(this.item.name)
 		}
 	}
 
-});
-
-Vue.component('menuitemsmallleft', {
-
-	props: ['image', 'link', 'show'],
-
-
-	template: "#menuitemsmallleft",
-});
-
-Vue.component('menuitemsmallright', {
-
-	props: ['image', 'link', 'show'],
-
-
-	template: "#menuitemsmallright",
 });
 
 Vue.component('page', {
@@ -45,6 +29,14 @@ Vue.component('page', {
 	props: ['item', 'show'],
 
 	template: "#page",
+
+});
+
+Vue.component('confettie', {
+
+	props: ['data'],
+
+	template: "#confettie",
 
 });
 
@@ -123,68 +115,6 @@ Vue.component('workpage', {
 	}
 });
 
-Vue.transition('rotateOff', {
-	css: false,
-	leave: function(el, done){
-		$(el).removeClass('rollenterleft');
-		$(el).removeClass('rollenterright');
-
-
-		if (this.$data.item.onthispage) {
-			this.$data.item.wasLastPage = true;
-
-			$(el).addClass('rollleaveleft');
-
-		} else {
-			$(el).addClass('rollleaveright');
-		}
-	},
-
-	enter: function(el, done){
-
-		$(el).removeClass('rollleaveleft');
-		$(el).removeClass('rollleaveright');
-
-		if (this.$data.item.wasLastPage) {
-			this.$data.item.wasLastPage = false;
-			$(el).addClass('rollenterleft');
-
-		} else {
-			$(el).addClass('rollenterright');
-		}
-	},
-});
-
-Vue.transition('rotateOffLeft', {
-	css: false,
-	leave: function(el, done){
-		$(el).removeClass('rollenterleft');
-
-		$(el).addClass('rollleaveleft');
-	},
-
-	enter: function(el, done){
-		$(el).removeClass('rollleaveleft');
-
-		$(el).addClass('rollenterleft');
-	},
-});
-
-Vue.transition('rotateOffRight', {
-	css: false,
-	leave: function(el, done){
-		$(el).removeClass('rollenterright');
-
-		$(el).addClass('rollleaveright');
-	},
-
-	enter: function(el, done){
-		$(el).removeClass('rollleaveright');
-
-		$(el).addClass('rollenterright');
-	},
-});
-
 
 Vue.transition('slideup', {
 	css: false,
@@ -221,6 +151,7 @@ var vue = new Vue({
 	data: {
 		work: {
 			name: '',
+			color: '#ee1f61',
 			srcNormal: '',
 			srcHover: '',
 			wasLastPage: false,
@@ -230,6 +161,7 @@ var vue = new Vue({
 
 		about: {
 			name: '',
+			color: '#eec01f',
 			srcNormal: '',
 			srcHover: '',
 			wasLastPage: false,
@@ -239,6 +171,7 @@ var vue = new Vue({
 
 		contact: {
 			name: '',
+			color: '#33b6d7',
 			srcNormal: '',
 			srcHover: '',
 			wasLastPage: false,
@@ -259,14 +192,54 @@ var vue = new Vue({
 		},
 		page: {
 			name: getPageFromUrl()
+		},
+		confettiedata: {
+			pieces: []
 		}
 	},
 
 	created: function () {
 	    this.fetchData()
+			this.positionConfettie(30)
+			var self = this
+			setInterval(function(){ self.moveConfettie(self); }, 100)
 	},
 
 	methods: {
+		positionConfettie: function(numberOf){
+			for (var i = 0; i < numberOf; i++) {
+				side = Math.floor(Math.random() * 4)
+				var b = {};
+				b.number = Math.floor(Math.random() * 9) + 1;
+				b.angle = Math.floor(Math.random() * 360);
+
+				if (side == 0) {
+					b.top = Math.floor(Math.random() * 5);
+					b.left = Math.floor(Math.random() * 98);
+				} else if (side == 1) {
+					b.top = Math.floor(Math.random() * 5) + 90;
+					b.left = Math.floor(Math.random() * 98);
+				} else if (side == 2) {
+					b.top = Math.floor(Math.random() * 95);
+					b.left = Math.floor(Math.random() * 10);
+				} else if (side == 3) {
+					b.top = Math.floor(Math.random() * 95);
+					b.left = Math.floor(Math.random() * 10) + 88;
+				}
+				b.angularFreq = Math.floor(Math.random() * 5);
+				b.amplitude = 0.5;
+				b.speed = Math.random();
+				this.confettiedata.pieces.push(b);
+			}
+		},
+		moveConfettie: function(self){
+			for (var i = 0; i < self.confettiedata.pieces.length; i++) {
+				var y = self.confettiedata.pieces[i].top + 0.5;
+				self.confettiedata.pieces[i].left = self.confettiedata.pieces[i].left + self.confettiedata.pieces[i].amplitude * Math.sin(self.confettiedata.pieces[i].angularFreq * y);
+
+				self.confettiedata.pieces[i].top = y;
+			}
+		},
 		back: function(){
 			this.page.name = 'home';
 		},
