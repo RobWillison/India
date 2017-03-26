@@ -1,16 +1,21 @@
 body {
   overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
 }
 
 a {
     color: #ffd700;
 }
 
-.menudiv {
-  width: 30vmax;
-  height: 30vmax;
+h3 {
+  color: #000000;
+}
 
-  padding-top: 3em;
+.menudiv {
+
+  width: 45vmax;
+  height: 30vmax;
+  padding-top: 15em;
   margin: 0 auto;
 }
 
@@ -170,7 +175,7 @@ a {
 .commentText {
   border-radius: 5px;
   border: 2px solid #ffd700;
-  padding: 20px; 
+  padding: 20px;
   width: 100%;
 }
 

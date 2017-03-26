@@ -307,13 +307,9 @@ var vue = new Vue({
 							this.about.srcHover = data[2]['src'] + '-hover.png'
 							this.about.content = data[2]['content']
 
-							this.comment.name = data[3]['title']
-							this.comment.srcNormal = data[3]['src'] + '-normal.png'
-							this.comment.srcHover = data[3]['src'] + '-hover.png'
-
-							this.contact.name = data[4]['title']
-							this.contact.srcNormal = data[4]['src'] + '-normal.png'
-							this.contact.srcHover = data[4]['src'] + '-hover.png'
+							this.comment.name = data[4]['title']
+							this.comment.srcNormal = data[4]['src'] + '-normal.png'
+							this.comment.srcHover = data[4]['src'] + '-hover.png'
 
 					}
 				});
