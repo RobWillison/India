@@ -86,12 +86,12 @@
 <template id="commentpage">
 	<div v-show="show" transition="slideup" class="page animated">
 		<div class="container">
-				<div class="col-xs-4"><a href="https://www.instagram.com/pearce.studio/"><h3><img src="images/instagram_icon.png" style="width: 5vw; padding-right: 1em;"/>@pearce.studio</h3></a></div>
-				<div class="col-xs-8"><h4>For commissions, collaborations or general enquiries you can email me at: <b> pearce.studio@outlook.com</b></h4></div>
+				<div class="col-md-6"><a href="https://www.instagram.com/pearce.studio/"><h3><img src="images/instagram_icon.png" style="height: 24px; padding-right: 1em;"/>@pearce.studio</h3></a></div>
+				<div class="col-md-6"><h4>For commissions, collaborations or general enquiries you can email me at: <b> pearce.studio@outlook.com</b></h4></div>
 			</div>
 
 			<div class="container" style="padding-top: 15vh;">
-			<div class="col-xs-6">
+			<div class="col-md-6">
 				<div v-for="comment in item.comments" class="comments">
 					<div class="commentText">
 						{{ comment.comment }}
@@ -101,7 +101,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-6">
+			<div class="col-md-6">
 				<h2><b>Leave a Comment!</b></h2>
 
 				<form class="form-horizontal">
